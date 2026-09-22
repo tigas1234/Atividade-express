@@ -9,10 +9,17 @@ let tarefas = [
 ];
 
 app.get("/", (req, res) => {
-    res.send("API de Tarefas no ar");});
+res.send("API de Tarefas no ar");});
 
 app.get("/tarefas", (req, res) => {
-    res.json(tarefas);});
+const { concluida } = req.query;
+
+if (concluida === "true") {
+return res.json(tarefas.filter(tarefa => tarefa.concluida === true));}
+
+if (concluida === "false") {
+return res.json(tarefas.filter(tarefa => tarefa.concluida === false));}
+res.json(tarefas);});
 
 app.get("/tarefas/:id", (req, res) => {
 const id = Number(req.params.id);
@@ -21,8 +28,7 @@ const tarefa = tarefas.find(tarefa => tarefa.id === id);
 if (!tarefa) {
 return res.status(404).json({
 erro: "Tarefa não encontrada"});}
-
-    res.json(tarefa);});
+res.json(tarefa);});
 
 app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);});
+console.log(`Servidor rodando na porta ${PORT}`);});
