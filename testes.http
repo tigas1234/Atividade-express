@@ -1,0 +1,25 @@
+### Exercício 1
+GET http://localhost:3000/
+
+### Exercício 2
+GET http://localhost:3000/tarefas
+
+### Exercício 3
+GET http://localhost:3000/tarefas/2
+
+### Exercício 3 - tarefa não encontrada
+GET http://localhost:3000/tarefas/99
+
+### Exercício 4 - tarefas concluídas
+GET http://localhost:3000/tarefas?concluida=true
+
+### Exercício 4 - tarefas não concluídas
+GET http://localhost:3000/tarefas?concluida=false
+
+### Exercício 5 - criar tarefa
+POST http://localhost:3000/tarefas
+Content-Type: application/json
+
+{
+    "titulo": "Fazer trabalho"
+}
